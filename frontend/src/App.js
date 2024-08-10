@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Question from "./components/Question";
+import QuestionProgressBar from "./components/QuestionProgressBar";
+import "./App.css";
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [completedQuestions, setCompletedQuestions] = useState(0);
 
   useEffect(() => {
     axios
@@ -12,11 +15,33 @@ function App() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
+  const handleInputChange = () => {
+    const completedCount = questions.filter((question, qIndex) => {
+      return question.fields.every((field, fIndex) => {
+        const fieldElement = document.querySelector(
+          `#field-${question.id}-${fIndex}`
+        );
+        return fieldElement && fieldElement.value.trim() !== "";
+      });
+    }).length;
+
+    setCompletedQuestions(completedCount);
+  };
+
   return (
     <div className="container">
-      <h1 className="my-4">UI Tech Test</h1>
-      {questions.map((question) => (
-        <Question key={question.id} question={question} />
+      <h1 className="App-Header">UI Tech Test</h1>
+
+      <QuestionProgressBar
+        totalQuestions={questions.length}
+        completedQuestions={completedQuestions}
+      />
+      {questions.map((question, index) => (
+        <Question
+          key={question.id}
+          question={question}
+          onChange={handleInputChange}
+        />
       ))}
     </div>
   );

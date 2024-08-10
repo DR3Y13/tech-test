@@ -2,37 +2,42 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-weight: 700 !important;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Adjusts the position of the underline */
+  width: 8%;
+  height: 3px; /* Thickness of the underline */
+  background-color: #0e4a8e; /* Color of the underline */
+}
+
+/* Custom progress bar styles */
+.styled-progress-bar .progress-bar {
+  background-color: #002a6e; /* Custom fill color */
+  color: #ffffff; /* Custom text color */
+}
+
+.styled-progress-bar .progress {
+  background-color: #d6d6d6; /* Custom background color */
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.styled-progress-bar .progress-bar {
+  animation: fade 1.5s infinite ease-in-out;
+  background-color: #0e4a8e; /* Custom color */
 }

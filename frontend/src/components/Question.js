@@ -1,6 +1,6 @@
 import React from "react";
 
-const Question = ({ question }) => {
+const Question = ({ question, onChange }) => {
   return (
     <div className="card mb-3">
       <div className="card-header">{question.title}</div>
@@ -19,6 +19,7 @@ const Question = ({ question }) => {
                   type={field.type}
                   className="form-control"
                   placeholder={field.placeholder}
+                  onChange={onChange}
                 />
               </div>
             );
@@ -31,6 +32,7 @@ const Question = ({ question }) => {
                   name={inputName}
                   className="form-control"
                   defaultValue=""
+                  onChange={onChange}
                 >
                   <option value="" disabled>
                     {field.placeholder}
