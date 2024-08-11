@@ -51,7 +51,9 @@ function App() {
           <Question
             key={question.id}
             question={question}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
+            onChange={(e) =>
+              handleInputChange(question.id, e.target?.value || "")
+            }
           />
         ))}
       </div>

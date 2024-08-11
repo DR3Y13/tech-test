@@ -1,7 +1,5 @@
 """
 Unit tests for the Flask API in `app.py`
-Usage:
-    Run with `python -m unittest discover tests` 
 """
 import unittest
 import json
@@ -36,7 +34,7 @@ class TestAPI(unittest.TestCase):
 
     @patch("builtins.open", new_callable=mock_open, read_data='{"questions": []}')
     @patch("app.json.dump")
-    def test_add_question(self, mock_json_dump, mock_file):
+    def test_add_question(self, mock_json_dump, _mock_file):
         """Test the POST /api/questions endpoint"""
         new_question = {
             "id": 999,
@@ -50,12 +48,12 @@ class TestAPI(unittest.TestCase):
         data = json.loads(response.data)
         self.assertEqual(data["message"], "Question added successfully!")
         mock_json_dump.assert_called_once_with(
-            {"questions": [new_question]}, mock_file(), indent=2)
+            {"questions": [new_question]}, _mock_file(), indent=2)
 
     @patch("builtins.open", new_callable=mock_open, read_data='{"questions": []}')
     @patch("app.json.dump")
     def test_add_question_invalid_data(self, mock_json_dump, _mock_file):
-        """Test the POST /api/questions endpoint with invalid data."""
+        """Test the POST /api/questions endpoint with invalid data"""
         invalid_question = {
             "id": 1000,
             "title": "Invalid Question",

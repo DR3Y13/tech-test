@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Question from "../components/Question";
 
-// Mock input question
+// Mock text input question
 const mockQuestionInput = {
   id: 1,
   title: "What is your full name?",
@@ -18,16 +18,29 @@ const mockQuestionInput = {
 // Mock select question
 const mockQuestionSelect = {
   id: 2,
-  title: "What is your favourite color?",
+  title: "What is your favourite colour?",
   fields: [
     {
       element: "select",
-      placeholder: "Select a color",
+      placeholder: "Select a colour",
       options: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
         { label: "Blue", value: "blue" },
       ],
+    },
+  ],
+};
+
+// Mock date input question
+const mockQuestionDate = {
+  id: 3,
+  title: "What is your birthdate?",
+  fields: [
+    {
+      element: "input",
+      type: "date",
+      placeholder: "Select your birthdate",
     },
   ],
 };
@@ -61,7 +74,7 @@ describe("Question Component", () => {
     render(<Question question={mockQuestionSelect} onChange={mockOnChange} />);
 
     // Check title is rendered
-    const titleElement = screen.getByText(/What is your favourite color?/i);
+    const titleElement = screen.getByText(/What is your favourite colour?/i);
     expect(titleElement).toBeInTheDocument();
 
     // Open dropdown
@@ -79,10 +92,25 @@ describe("Question Component", () => {
     expect(optionBlue).toBeInTheDocument();
   });
 
+  test("renders date input field with correct attributes", () => {
+    render(<Question question={mockQuestionDate} onChange={mockOnChange} />);
+
+    // Check title is rendered
+    const titleElement = screen.getByText(/What is your birthdate?/i);
+    expect(titleElement).toBeInTheDocument();
+
+    // Check date input field is rendered with correct attributes
+    const dateInputElement = screen.getByPlaceholderText(
+      /Select your birthdate/i
+    );
+    expect(dateInputElement).toBeInTheDocument();
+    expect(dateInputElement).toHaveAttribute("type", "date");
+  });
+
   test("handles missing fields", () => {
     render(
       <Question
-        question={{ id: 3, title: "No fields question", fields: [] }}
+        question={{ id: 4, title: "No fields question", fields: [] }}
         onChange={mockOnChange}
       />
     );
@@ -91,7 +119,7 @@ describe("Question Component", () => {
     const titleElement = screen.getByText(/No fields question/i);
     expect(titleElement).toBeInTheDocument();
 
-    // no input or select elements rendered
+    // No input or select elements rendered
     expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
     expect(screen.queryByRole("combobox")).not.toBeInTheDocument();
   });
