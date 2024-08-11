@@ -1,23 +1,15 @@
+/*global*/
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #f5f5f5;
-}
-* {
-  font-family: "Aller";
+  font-family: "Aller", sans-serif;
   color: #0e4a8e;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 @font-face {
   font-family: "Aller";
   src: url("fonts/Aller-Regular.woff2") format("woff2"),
@@ -29,21 +21,46 @@ code {
   font-family: "Aller";
   src: url("fonts/Aller-Bold.woff") format("woff"),
     url("fonts/Aller-Bold.woff2") format("woff2");
-  font-weight: 900;
+  font-weight: bold;
   font-style: normal;
-  font-size: larger;
 }
+
+.styled-progress-bar .progress-bar {
+  animation: fade 1.5s infinite ease-in-out;
+  background-color: #0e4a8e;
+}
+.progress-container {
+  display: flex;
+  align-items: center;
+}
+.progress-label {
+  margin-right: 0.625rem;
+  font-weight: bold;
+  color: #0e4a8e;
+}
+
+.styled-progress-bar {
+  flex-grow: 1;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/*questions*/
 .question-container {
-  margin-bottom: 2rem;
   padding: 1rem 0;
   border-bottom: 0.1rem solid #0e4a8e;
 }
 .question-title {
-  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  position: relative;
-  display: inline-block;
+  color: #0e4a8e;
 }
 
 .question-title::after {
@@ -55,7 +72,6 @@ code {
   margin-top: 0.25rem;
   margin-bottom: 1.3rem;
 }
-
 .form-group {
   margin-bottom: 2rem;
   width: fit-content;
@@ -68,7 +84,23 @@ code {
 
 .first-name-container label,
 .last-name-container label {
-  margin-bottom: 0.3rem; /* Space between the label and input */
   color: #1a3d6e;
-  font-size: 0.875rem; /* Adjust the font size as needed (e.g., 14px or 0.875rem) */
+  font-size: 0.875rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 0.625rem;
+  background-color: #e6f0fa;
+  border: 0.06rem solid #a4c8e0;
+  box-shadow: inset 0 0.06rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]::placeholder {
+  color: #a4c8e0;
 }

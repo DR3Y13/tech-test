@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Tech Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a full-stack featuring a ReactJs + Bootstrap frontend and a Flask backend which consumes a given JSON file populated with questions. The frontend provides a dynamic user interface for interacting with the application's features, while the backend serves as the API layer, handling data management and processing
 
-## Available Scripts
+The setup instructions below will guide you through getting both the frontend and backend up and running, as well as how to test each part of the application
 
-In the project directory, you can run:
+It is recommended to have 2 terminals running - one for the frontend and one for the backend
 
-### `npm start`
+## Frontend - setting up and running
 
-Runs the app in the development mode.\
+Use a local web server to point to the files in `/frontend/`
+
+If you have node installed you should be able to `npm install && npm start` to spin up a local server using the `http-server` module.
+
+This runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Frontend - testing
 
-### `npm test`
+run `npm test` in the `/frontend/` directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Backend - setting up and running
 
-### `npm run build`
+Navigate to `/backend/`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If you have Python 3.x installed, you should be able to create a virtual environment using `python -m venv venv`, activate using `source venv/bin/activate` on macOS/Linux or `venv/Scripts/activate` on Windows
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install dependencies using `pip install -r requirements.txt`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run using `python app.py` or `flask run`
 
-### `npm run eject`
+The Flask server runs in development mode
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) to access the API endpoints
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Frontend - testing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+run `python -m unittest discover tests` in the `/backend/` directory

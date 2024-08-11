@@ -7,7 +7,6 @@ import "./App.css";
 function App() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
-  const [completedQuestions, setCompletedQuestions] = useState(0);
 
   useEffect(() => {
     axios
@@ -16,13 +15,6 @@ function App() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  useEffect(() => {
-    const completedCount = Object.keys(answers).filter(
-      (key) => answers[key] !== ""
-    ).length;
-    setCompletedQuestions(completedCount);
-  }, [answers, questions.length]);
-
   const handleInputChange = (questionId, value) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
@@ -30,21 +22,25 @@ function App() {
     }));
   };
 
+  const completedQuestions = Object.keys(answers).filter(
+    (key) => answers[key] !== ""
+  ).length;
+
   return (
     <div>
-      <div className="custom-navbar">
+      <nav className="customised-navbar">
         <div className="container-fluid">
           <a className="navbar-brand d-flex align-items-center" href="/">
             <img
               src="/images/ctm.png"
               alt="Avatar Logo"
-              style={{ width: "40px" }}
+              style={{ width: 40 }}
               className="rounded-pill"
             />
             <span className="brand-name">UI Tech Test</span>
           </a>
         </div>
-      </div>
+      </nav>
       <div className="container">
         <QuestionProgressBar
           totalQuestions={questions.length}
