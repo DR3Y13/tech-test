@@ -2,6 +2,11 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
 }
 * {
   font-family: "Aller";
@@ -24,6 +29,46 @@ code {
   font-family: "Aller";
   src: url("fonts/Aller-Bold.woff") format("woff"),
     url("fonts/Aller-Bold.woff2") format("woff2");
-  font-weight: 700;
+  font-weight: 900;
   font-style: normal;
+  font-size: larger;
+}
+.question-container {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 0.1rem solid #0e4a8e;
+}
+.question-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.question-title::after {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 0.2rem;
+  background-color: #1a3d6e;
+  margin-top: 0.25rem;
+  margin-bottom: 1.3rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+
+.name-fields {
+  display: flex;
+  gap: 1rem;
+}
+
+.first-name-container label,
+.last-name-container label {
+  margin-bottom: 0.3rem; /* Space between the label and input */
+  color: #1a3d6e;
+  font-size: 0.875rem; /* Adjust the font size as needed (e.g., 14px or 0.875rem) */
 }

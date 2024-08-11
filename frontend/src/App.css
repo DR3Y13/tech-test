@@ -1,30 +1,20 @@
-.App {
-  text-align: center;
-}
-
-h1 {
-  font-weight: 700 !important;
-  position: relative;
-}
-
-h1::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px; /* Adjusts the position of the underline */
-  width: 8%;
-  height: 3px; /* Thickness of the underline */
-  background-color: #0e4a8e; /* Color of the underline */
-}
-
-/* Custom progress bar styles */
 .styled-progress-bar .progress-bar {
-  background-color: #002a6e; /* Custom fill color */
-  color: #ffffff; /* Custom text color */
+  background-color: #002a6e;
+  color: #ffffff;
 }
-
+.progress-container {
+  display: flex;
+  align-items: center;
+}
+.progress-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
 .styled-progress-bar .progress {
-  background-color: #d6d6d6; /* Custom background color */
+  background-color: #d6d6d6;
+}
+.styled-progress-bar {
+  flex-grow: 1;
 }
 
 @keyframes fade {
@@ -39,5 +29,75 @@ h1::after {
 
 .styled-progress-bar .progress-bar {
   animation: fade 1.5s infinite ease-in-out;
-  background-color: #0e4a8e; /* Custom color */
+  background-color: #0e4a8e;
+}
+input {
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+.container {
+  max-width: 37.5rem;
+  padding: 1.25rem;
+  margin-top: 3rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+}
+.container-fluid {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  font-weight: bold;
+  color: white;
+  margin-left: 0.625rem;
+  font-size: x-large;
+}
+
+.custom-navbar {
+  width: 100%;
+  background-color: #0e4a8e;
+  color: white;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 0.625rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  background-color: #e6f0fa;
+  border: 0.06rem solid #a4c8e0;
+  box-shadow: inset 0 0.06rem 0.2rem rgba(0, 0, 0, 0.1);
+  /* transition: border-color 0.3s ease, box-shadow 0.3s ease; */
+}
+
+input[type="text"]::placeholder {
+  color: #a4c8e0;
 }
